@@ -18,7 +18,7 @@ class Caculator
 
   def getMatches()
 
-    url = "http://botliga.de/api/matches/2010"
+    url = "http://botliga.de/api/matches/2011"
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     result = JSON.parse(data)
@@ -135,12 +135,17 @@ gastgoals = 0
     else
       gastgoals = rand(basicGoals)
       if gastgoals == 0
-gastgoals = gastgoals + 1
-homegoals= 0
+	gastgoals = gastgoals + 1
+	homegoals= 0
       elsif gastgoals == 1
         homegoals= 0
       else
-homegoals= rand(gastgoals-1)
+	homegoals= rand(gastgoals-1)
+        if homegoals == 0
+	   if rand(1000) > 800
+	     homegoals = 1
+           end	
+        end
       end
     end
 
