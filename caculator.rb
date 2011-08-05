@@ -63,8 +63,11 @@ class Caculator
   def caculate(homeTeamId, awayTeamId)
  
     homeTeam = findTeamById(homeTeamId)
-    gastTeam = findTeamById(awayTeamId)
-    
+    gastTeam = findTeamById(awayTeamId)  
+
+    matchname = homeTeam.name + " : " + gastTeam.name    
+    puts matchname
+
     different = homeTeam.rank - gastTeam.rank
     
     if different.abs < 2
